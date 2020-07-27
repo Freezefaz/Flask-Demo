@@ -1,6 +1,6 @@
 <img src="https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png" style="margin: 0;">
 
-Welcome USER_NAME,
+Welcome Freezefaz,
 
 This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project.
 
@@ -10,30 +10,41 @@ To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the ter
 
 `python3 -m http.server`
 
-A blue button should appear to click: *Make Public*,
+QUESTIONS TO ANSWER
 
-Another blue button should appear to click: *Open Browser*.
+Form Processing Practise
+Q1: Check age
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+Create a route /ask that will display a form to ask for the user's age.
 
-A blue button should appear to click: *Make Public*,
+In the POST version of the route, the code will determine if age is above 21. If so, return the string "You are able to vote" or else display "Try again in 5 years time".
 
-Another blue button should appear to click: *Open Browser*.
+Q2: BMI
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the backend lessons.
+Create a route /bmi that will display two textfields, one for the weight (in kg) and one for the height (in metres).
 
-## Updates Since The Instructional Video
+In the POST versin of the route, display the user's BMI.
 
-We continually tweak and adjust this template to help give you the best experience. Here are the updates since the original video was made:
+Q3: Currency Search
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+Use a route to display two textboxes and ask the user to enter two currency symbol.
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+In the POST version of the route, use the https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=USD&to_currency=JPY&apikey=demo API to retrieve and display the exchange rate.
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+You need to provide your own api key.
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+Q4: Validation
 
---------
+In a route, display the form to ask the user for their first name, last name and email address.
 
-Happy coding!
+After processing the form, if the user has entered at least:
+
+    Entered three characters for the first name
+    Entered three characters for the last name
+    email address contains a '@'
+
+Then display in the template "Sign up successful".
+
+If there any field doesn't match its rule, display in the template "There are some issues signing up". Display in an unordered list (i.e, bullet point) the criteria that the user didn't meet.
+
+Advanced: Change the form to Bootstrap, and use Bootstrap error class to display the issues. See https://getbootstrap.com/docs/4.0/components/forms/#server-side for some hints.

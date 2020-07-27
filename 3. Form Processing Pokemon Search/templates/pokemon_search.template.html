@@ -1,0 +1,12 @@
+{% extends 'layout.template.html' %}
+
+{% block content %}
+<form method="POST">
+    <div>
+        <label>Enter name of Pokemon:</label>
+        <input class="form-control" type="text" name="search-for"/>
+    </div>
+    <input type="submit"/>
+</form>
+
+{%endblock%}
