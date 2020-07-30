@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+<title>Title</title>
+</head>
+<body>
+
+    <form method="POST">
+      <div>
+            <label>Caption:</label>
+            <input type="text" name="caption"/>
+        </div>
+        <div>
+        <!-- Don't make it into a button as it will send out the form before info can be displayed -->
+	        <a id="upload_widget" class="cloudinary-button">Upload Files</a>
+        </div>
+        <input type="hidden" id="uploaded-file-url" name="uploaded-file-url"/>
+        <input type="hidden" id="asset-id" name="asset-id"/>
+        <input type="submit"/>
+    </form>
+
+<!-- code from Cloudinary  -->
+
+<script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>  
+
+<script type="text/javascript">  
+var myWidget = cloudinary.createUploadWidget({
+  cloudName: '{{cloud_name}}', 
+  uploadPreset: '{{upload_preset}}'}, (error, result) => { 
+    if (!error && result && result.event === "success") { 
+     console.log(result);
+                    // extract info from inspector of html  
+                    let assetId = result.info.asset_id;
+                    let fileURL = result.info.url;
+                    // assign the inspector info to the javascript value
+                    document.querySelector("#uploaded-file-url").value = fileURL;
+                    document.querySelector("#asset-id").value = assetId;
+    }
+  }
+)
+
+document.getElementById("upload_widget").addEventListener("click", function(){
+    myWidget.open();
+  }, false);
+</script>
+
+<!-- info from cloudinary -->
+<!-- asset_id: "8325c4556c6bcaba710778bc7e3e75bd" -->
+<!-- url: "http://res.cloudinary.com/fareez/image/upload/v1596077367/pokeball_qccwui.png" -->
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>

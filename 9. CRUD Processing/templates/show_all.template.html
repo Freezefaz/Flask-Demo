@@ -1,0 +1,39 @@
+{%extends 'layout.template.html' %}
+
+{% block content %}
+<h1>Unsafe Distancing Reports <a href="{{ url_for('show_add_report_form') }}" class="btn btn-primary">Report</a></h1>
+
+<div>
+<!-- for loop to get every report in the data base -->
+    {% for report in database %}
+    <div class="card">
+        <div class="card-body">
+        <!-- Format of the report shown -->
+            <div class="card-title"><h3>Incident {{report.id}} : {{report.location}}</h3></div>            
+            <div>
+                <a href="{{ url_for('show_update_form', report_id=report.id) }}" class="btn btn-primary">Edit</a>
+                <a href="{{ url_for('confirm_to_delete_report', report_id=report.id) }}" class="btn btn-danger">Delete</a>
+            </div>
+            <blockquote>
+                {{report.comments}}
+            </blockquote>
+            <ul>
+                <li>Density: {{report.crowd_density}}</li>
+                <li>Activities observed: {{report.activity}}</li>
+            </ul>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+{%block additional_js%}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<script>
+    axios.post('/api/dummy', {
+        'data':"hello world"
+    }).then(function(r){
+        console.log(r.response);
+    })
+</script>
+{%endblock%}

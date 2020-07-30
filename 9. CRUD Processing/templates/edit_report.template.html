@@ -1,0 +1,44 @@
+{% extends 'layout.template.html' %} {% block content %}
+
+<h1>Editing incident ID# {{report.id}}</h1>
+
+<form method="POST">
+  <div>
+    <label>Location</label>
+    <!-- to update the respective changes -->
+    <input
+      type="text"
+      name="location"
+      class="form-control"
+      value="{{report.location}}"
+    />
+  </div>
+  <div>
+    <label>Comments</label>
+    <textarea type="text" name="comments" class="form-control">
+{{report.comments}}</textarea
+    >
+  </div>
+  <div>
+    <label>Crowd density</label>
+    <input type="radio" name="density" value="10-to-20" {%if
+    report.crowd_density=="10-to-20"%} checked {%endif%} >10 to 20
+    <!-- To give the update feedback that what was checked applies to radio and checkboxes-->
+    <input type="radio" name="density" value="21-to-50" {%if
+    report.crowd_density=="21-to-50"%} checked {%endif%} >21 to 50 <input
+    type="radio" name="density" value="51-to-100" {%if
+    report.crowd_density=="51-to-100"%} checked {%endif%} >51 to 100
+  </div>
+  <div>
+    <label>Activities Observed</label>
+    <input type="checkbox" name="activity" value="smoking" {%if "smoking" in
+    report.activity%} checked {%endif%} >Smoking
+    <!-- To give the update feedback that what was checked applies to radio and checkboxes-->
+    <input type="checkbox" name="activity" value="drinking" {%if "drinking" in
+    report.activity%} checked {%endif%} >Drinking <input type="checkbox"
+    name="activity" value="pokemon-go" {%if "pokemon-go" in report.activity%}
+    checked {%endif%} >Pokemon-Go
+  </div>
+  <input type="submit" value="Update" class="btn btn-primary" />
+</form>
+{% endblock %}

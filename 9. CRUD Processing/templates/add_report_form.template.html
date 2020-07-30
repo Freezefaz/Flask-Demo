@@ -1,0 +1,31 @@
+{%extends 'layout.template.html' %}
+
+{% block content %}
+
+<h2>Add a new report</h2>
+
+<form method="POST">
+    <div>
+        <label>Location</label>
+        <input type="text" name="location" class="form-control"/>
+    </div>
+    <div>
+        <label>Comments</label>
+        <textarea type="text" name="comments" class="form-control"></textarea>
+    </div>
+    <div>
+        <label>Crowd density</label>
+        <input type="radio" name="density" value="10-to-20">10 to 20
+        <input type="radio" name="density" value="21-to-50">21 to 50
+        <input type="radio" name="density" value="51-to-100">51 to 100
+    </div>
+    <div>
+        <label>Activities Observed</label>
+        <input type="checkbox" name="activity" value="smoking">Smoking
+        <input type="checkbox" name="activity" value="drinking">Drinking
+        <input type="checkbox" name="activity" value="pokemon-go">Pokemon-Go
+    </div>
+    <input type="submit" value="Report" class="btn btn-primary"/>
+
+</form>
+{% endblock %}

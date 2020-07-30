@@ -1,0 +1,21 @@
+{% extends 'layout.template.html' %} {% block content %}
+
+<h1>Confirm deletion</h1>
+
+<div class="alert alert-danger">
+  <form method="POST">
+    <p>
+      Are you sure you want to delete 
+      <!-- highlight the changes to be made -->
+      <span style="background-color: yellow;"
+        >Incident report#{{report.id}} at {{report.location}}</span
+      >
+    </p>
+
+    <input type="submit" value="CONFIRM" class="btn btn-danger" />
+    <!-- brings the user back to the original page -->
+    <a href="{{ url_for('show_all') }}" class="btn btn-primary">Cancel Delete</a>
+  </form>
+</div>
+
+{% endblock %}
